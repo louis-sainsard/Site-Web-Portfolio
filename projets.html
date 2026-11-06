@@ -1,0 +1,922 @@
+﻿
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | Louis Sainsard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+             /* ==============================
+                1. STYLE GÉNÉRAL
+                ============================== */
+
+             :root {
+                 --fond: #F5F4F0;
+                 --fond-degrade: #E8EBEF;
+                 --blanc: #FFFFFF;
+                 --texte: #242729;
+                 --secondaire: #777B7D;
+                 --bordure: #DEDFDD;
+                 --survol: #E9EAE7;
+                 --ligne: #C9CBC8;
+             }
+
+             * {
+                 box-sizing: border-box;
+             }
+
+             html {
+                 scroll-behavior: smooth;
+             }
+
+             body {
+                 margin: 0;
+                 font-family: 'Inter', sans-serif;
+                 background: linear-gradient( 135deg, var(--fond) 0%, #F1F2F4 55%, var(--fond-degrade) 100% );
+                 color: var(--texte);
+                 min-height: 100vh;
+             }
+
+             a {
+                 color: inherit;
+                 text-decoration: none;
+             }
+
+             /* ==============================
+        2. BANDEAU SUPÉRIEUR
+        ============================== */
+
+             .header {
+                 display: flex;
+                 align-items: center;
+                 justify-content: space-between;
+                 gap: 20px;
+                 padding: 18px 5%;
+                 background-color: var(--fond);
+                 border-bottom: 1px solid var(--bordure);
+             }
+
+             .header-left {
+                 display: flex;
+                 align-items: center;
+                 gap: 15px;
+             }
+
+             .logo {
+                 width: 52px;
+                 height: 52px;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 border: 1px solid var(--texte);
+                 font-size: 21px;
+                 font-weight: 400;
+                 letter-spacing: 1px;
+             }
+
+             .site-title {
+                 margin: 0;
+                 font-size: 17px;
+                 font-weight: 700;
+                 letter-spacing: 2px;
+             }
+
+             .header-subtitle {
+                 margin-top: 5px;
+                 color: var(--secondaire);
+                 font-size: 11px;
+                 letter-spacing: 1.5px;
+             }
+
+             .header-right {
+                 color: var(--secondaire);
+                 font-size: 12px;
+                 letter-spacing: 1px;
+                 text-align: right;
+             }
+
+             /* ==============================
+        3. MENU DE NAVIGATION
+        ============================== */
+
+             .menu {
+                 display: flex;
+                 justify-content: center;
+                 align-items: stretch;
+                 background-color: var(--blanc);
+                 padding: 0 5%;
+                 border-bottom: 1px solid var(--bordure);
+             }
+
+             .menu-item {
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 gap: 8px;
+                 position: relative;
+                 padding: 19px 24px;
+                 border: none;
+                 background: transparent;
+                 color: var(--texte);
+                 font: inherit;
+                 font-size: 14px;
+                 font-weight: 500;
+                 text-decoration: none;
+                 cursor: pointer;
+                 transition: background-color 0.2s ease;
+             }
+
+                 .menu-item:hover,
+                 .menu-item:focus-visible,
+                 .dropdown:focus-within > .dropdown-trigger {
+                     background-color: var(--survol);
+                 }
+
+                 .menu-item:focus-visible,
+                 .dropdown-content a:focus-visible {
+                     outline: 2px solid var(--texte);
+                     outline-offset: -3px;
+                 }
+
+             /* Menu déroulant */
+
+             .dropdown {
+                 position: relative;
+                 display: flex;
+             }
+
+             .dropdown-trigger {
+                 white-space: nowrap;
+             }
+
+             .chevron {
+                 font-size: 11px;
+             }
+
+             .dropdown-content {
+                 display: none;
+                 position: absolute;
+                 top: 100%;
+                 left: 0;
+                 min-width: 230px;
+                 background-color: var(--blanc);
+                 border: 1px solid var(--bordure);
+                 border-radius: 0 0 6px 6px;
+                 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+                 z-index: 10;
+             }
+
+                 .dropdown-content a {
+                     display: block;
+                     padding: 14px 18px;
+                     color: var(--texte);
+                     font-size: 14px;
+                     text-decoration: none;
+                     transition: background-color 0.2s ease;
+                 }
+
+                     .dropdown-content a:hover {
+                         background-color: var(--survol);
+                     }
+
+             .dropdown-divider {
+                 height: 1px;
+                 margin: 0 12px;
+                 background-color: var(--bordure);
+             }
+
+             /* Ouverture au survol et au clavier */
+
+             .dropdown:hover .dropdown-content,
+             .dropdown:focus-within .dropdown-content,
+             .dropdown.open .dropdown-content {
+                 display: block;
+             }
+             /* ==============================
+                3. TITRE DE LA PAGE
+                ============================== */
+
+             .page-intro {
+                 max-width: 900px;
+                 margin: 0 auto;
+                 padding: 75px 24px 55px;
+                 text-align: center;
+             }
+
+                 .page-intro h1 {
+                     margin: 0;
+                     font-size: clamp(36px, 5vw, 52px);
+                     font-weight: 600;
+                     letter-spacing: -1.8px;
+                 }
+
+                 .page-intro p {
+                     margin: 18px auto 0;
+                     max-width: 650px;
+                     color: var(--secondaire);
+                     font-size: 15px;
+                     line-height: 1.8;
+                 }
+
+             /* ==============================
+                4. TIMELINE DES PROJETS
+                ============================== */
+
+             .timeline {
+                 position: relative;
+                 width: min(1100px, 88%);
+                 margin: 0 auto;
+                 padding: 10px 0 60px;
+             }
+
+                 .timeline::before {
+                     content: "";
+                     position: absolute;
+                     top: 0;
+                     bottom: 60px;
+                     left: 50%;
+                     width: 2px;
+                     background: var(--ligne);
+                     transform: translateX(-50%);
+                 }
+
+             .timeline-item {
+                 position: relative;
+                 display: grid;
+                 grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+                 align-items: center;
+                 margin-bottom: 45px;
+             }
+
+             .timeline-dot {
+                 grid-column: 2;
+                 grid-row: 1;
+                 justify-self: center;
+                 z-index: 1;
+                 width: 14px;
+                 height: 14px;
+                 background: var(--texte);
+                 border: 3px solid var(--fond);
+                 border-radius: 50%;
+                 box-shadow: 0 0 0 1px var(--ligne);
+             }
+
+             .project-card {
+                 min-height: 150px;
+                 padding: 25px;
+                 background: var(--blanc);
+                 border: 1px solid var(--bordure);
+                 border-radius: 10px;
+                 box-shadow: 0 5px 18px rgba(36, 39, 41, 0.035);
+                 transition: transform 0.2s ease, box-shadow 0.2s ease;
+             }
+
+                 .project-card:hover {
+                     transform: translateY(-3px);
+                     box-shadow: 0 9px 25px rgba(36, 39, 41, 0.07);
+                 }
+
+                 .project-card h2 {
+                     margin: 0;
+                     font-size: 20px;
+                     font-weight: 600;
+                 }
+
+                 .project-card p {
+                     margin: 12px 0 0;
+                     color: var(--secondaire);
+                     font-size: 14px;
+                     line-height: 1.7;
+                 }
+
+             .timeline-item:nth-child(odd) .project-card {
+                 grid-column: 1;
+                 grid-row: 1;
+                 text-align: right;
+             }
+
+             .timeline-item:nth-child(even) .project-card {
+                 grid-column: 3;
+                 grid-row: 1;
+                 text-align: left;
+             }
+
+             .project-image {
+                 width: 100%;
+                 height: 220px;
+                 object-fit: cover;
+                 display: block;
+                 margin-top: 18px;
+                 border-radius: 8px;
+             }
+
+             /* Fenêtre modale */
+             .modal-overlay {
+                 display: none;
+                 position: fixed;
+                 inset: 0;
+                 background: rgba(20, 22, 25, 0.55);
+                 backdrop-filter: blur(4px);
+                 z-index: 1000;
+                 justify-content: center;
+                 align-items: center;
+                 padding: 20px;
+             }
+
+                 .modal-overlay.active {
+                     display: flex;
+                 }
+
+             .modal-content {
+                 position: relative;
+                 background: #F5F4F0;
+                 color: #242729;
+                 width: 100%;
+                 max-width: 600px;
+                 max-height: 85vh;
+                 overflow-y: auto;
+                 padding: 32px;
+                 border-radius: 16px;
+                 box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+                 animation: modalAppear 0.25s ease;
+             }
+
+                 .modal-content h2 {
+                     margin-top: 0;
+                     font-size: 26px;
+                 }
+
+                 .modal-content p {
+                     line-height: 1.7;
+                 }
+
+             /* Respecte les retours à la ligne dans les descriptions */
+             #modal-description {
+                 white-space: pre-line;
+             }
+
+             .modal-image {
+                 width: 100%;
+                 max-height: 280px;
+                 object-fit: cover;
+                 border-radius: 10px;
+                 margin: 12px 0;
+             }
+
+             .modal-close {
+                 position: absolute;
+                 top: 12px;
+                 right: 16px;
+                 border: none;
+                 background: transparent;
+                 color: #242729;
+                 font-size: 28px;
+                 cursor: pointer;
+             }
+
+             .modal-link {
+                 display: inline-block;
+                 margin-top: 16px;
+                 padding: 12px 18px;
+                 background: #242729;
+                 color: white;
+                 text-decoration: none;
+                 border-radius: 8px;
+                 transition: opacity 0.2s;
+             }
+
+                 .modal-link:hover {
+                     opacity: 0.8;
+                 }
+
+             /* Deuxième bouton : compétences associées */
+             .modal-skills-link {
+                 background: transparent;
+                 color: #242729;
+                 border: 1px solid #242729;
+                 margin-left: 8px;
+             }
+
+                 .modal-skills-link:hover {
+                     background: #E8EBEF;
+                     opacity: 1;
+                 }
+
+             @media (max-width: 480px) {
+                 .modal-link {
+                     display: block;
+                     text-align: center;
+                     margin-left: 0;
+                 }
+             }
+
+             .project-card {
+                 cursor: pointer;
+             }
+
+             @keyframes modalAppear {
+                 from {
+                     opacity: 0;
+                     transform: translateY(12px) scale(0.98);
+                 }
+
+                 to {
+                     opacity: 1;
+                     transform: translateY(0) scale(1);
+                 }
+             }
+
+             /* ==============================
+                5. PIED DE PAGE
+                ============================== */
+
+             .footer {
+                 display: flex;
+                 justify-content: space-between;
+                 align-items: center;
+                 gap: 20px;
+                 padding: 24px 6%;
+                 background: rgba(255, 255, 255, 0.55);
+                 border-top: 1px solid var(--bordure);
+                 flex-wrap: wrap;
+             }
+
+             .footer-copy {
+                 margin: 0;
+                 color: var(--secondaire);
+                 font-size: 13px;
+             }
+
+             .footer-links {
+                 display: flex;
+                 align-items: center;
+                 gap: 24px;
+                 flex-wrap: wrap;
+             }
+
+             .footer-link {
+                 display: inline-flex;
+                 align-items: center;
+                 gap: 8px;
+                 font-size: 13px;
+                 transition: opacity 0.2s ease;
+             }
+
+                 .footer-link:hover {
+                     opacity: 0.65;
+                 }
+
+             .footer-icon {
+                 width: 20px;
+                 height: 20px;
+                 object-fit: contain;
+             }
+
+             /* ==============================
+                6. ADAPTATION AUX PETITS ÉCRANS
+                ============================== */
+
+             @media (max-width: 900px) {
+                 .header {
+                     flex-direction: column;
+                     align-items: flex-start;
+                     gap: 15px;
+                 }
+
+                 .navigation {
+                     flex-wrap: wrap;
+                 }
+             }
+
+             @media (max-width: 600px) {
+                 .navigation {
+                     gap: 4px;
+                 }
+
+                 .menu-item {
+                     padding: 9px 8px;
+                     font-size: 12px;
+                 }
+
+                 .page-intro {
+                     padding: 55px 22px 40px;
+                 }
+
+                 .timeline {
+                     width: 100%;
+                     padding: 10px 20px 40px 28px;
+                 }
+
+                     .timeline::before {
+                         left: 7px;
+                         bottom: 40px;
+                     }
+
+                 .timeline-item {
+                     grid-template-columns: 15px minmax(0, 1fr);
+                     column-gap: 18px;
+                     margin-bottom: 25px;
+                 }
+
+                 .timeline-dot {
+                     grid-column: 1;
+                     grid-row: 1;
+                     justify-self: center;
+                     align-self: start;
+                     margin-top: 27px;
+                 }
+
+                 .timeline-item:nth-child(odd) .project-card,
+                 .timeline-item:nth-child(even) .project-card {
+                     grid-column: 2;
+                     grid-row: 1;
+                     text-align: left;
+                 }
+
+                 .project-card {
+                     min-height: 125px;
+                     padding: 20px;
+                 }
+
+                 .footer {
+                     flex-direction: column;
+                     align-items: flex-start;
+                 }
+             }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+     BANDEAU SUPÉRIEUR
+     ============================== -->
+
+    <header class="header">
+
+        <div class="header-left">
+            <a class="logo"
+               aria-label="Retour à la présentation">
+                LS
+            </a>
+
+            <div>
+                <h1 class="site-title">LOUIS SAINSARD</h1>
+                <div class="header-subtitle">PORTFOLIO PERSONNEL</div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            PROJETS · PARCOURS · EXPÉRIENCES
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         MENU DE NAVIGATION
+         ============================== -->
+
+    <nav class="menu" aria-label="Navigation principale">
+
+        <a href="accueil.html"
+           class="menu-item"
+           aria-current="page">
+            Accueil
+        </a>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                Projets et Compétences <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="projets.html">Tous mes projets</a>
+                <div class="dropdown-divider"></div>
+                <a href="competences.html">Compétences</a>
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                Parcours <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="parcours-etudiant.html">Parcours étudiant</a>
+                <div class="dropdown-divider"></div>
+                <a href="experiences.html">Expériences professionnelles</a>
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                À propos <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         CONTENU SPÉCIFIQUE : PROJETS
+         ============================== -->
+
+    <main>
+
+        <section class="page-intro">
+            <h1>Mes projets</h1>
+            <p>
+                <!-- Ajoute ici ta propre description. -->
+            </p>
+        </section>
+
+
+        <section class="timeline" aria-label="Liste de mes projets">
+            <div class="timeline-item">
+                <article class="project-card" onclick="openProject(1)" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openProject(1)}" tabindex="0" role="button" aria-label="Afficher les détails du Projet 1">
+                    <h2>Projet 1</h2>
+
+                    <img src="images/autotimeline.png"
+                         alt="Capture du site Auto Timeline"
+                         class="project-image">
+
+                    <p></p>
+                </article>
+
+                <span class="timeline-dot"></span>
+            </div>
+
+            <div class="timeline-item">
+                <article class="project-card" onclick="openProject(2)" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openProject(2)}" tabindex="0" role="button" aria-label="Afficher les détails du Projet 2">
+                    <h2>Projet 2</h2>
+
+                    <img src="images/projet2.png"
+                         alt="Photo du robot du projet"
+                         class="project-image">
+
+                    <p></p>
+                </article>
+                <span class="timeline-dot"></span>
+            </div>
+
+            <div class="timeline-item">
+                <article class="project-card" onclick="openProject(3)" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openProject(3)}" tabindex="0" role="button" aria-label="Afficher les détails du Projet 3">
+                    <h2>Projet 3</h2>
+
+                    <img src="images/projet3.png"
+                        alt="Photo du site de drive'up"
+                        class="project-image">
+
+                    <p></p>
+                </article>
+                <span class="timeline-dot"></span>
+            </div>
+
+            <div class="timeline-item">
+                <article class="project-card" onclick="openProject(4)" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openProject(4)}" tabindex="0" role="button" aria-label="Afficher les détails du Projet 4">
+                    <h2>Projet 4</h2>
+
+                    <img src="images/projet4.jpg"
+                         alt="Photo du robot marcheur"
+                         class="project-image">
+
+                    <p></p>
+                </article>
+                <span class="timeline-dot"></span>
+            </div>
+
+            <div class="timeline-item">
+                <article class="project-card" onclick="openProject(5)" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openProject(5)}" tabindex="0" role="button" aria-label="Afficher les détails du Projet 5">
+                    <h2>Projet 5</h2>
+
+
+                    <img src="images/projet5.png"
+                         alt="Photo du robot marcheur"
+                         class="project-image">
+
+                    <p></p>
+                </article>
+                <span class="timeline-dot"></span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         PIED DE PAGE COMMUN
+         ============================== -->
+
+    <footer class="footer">
+
+        <p class="footer-copy">© 2026 — Portfolio</p>
+
+        <div class="footer-links">
+
+            <a href="https://www.linkedin.com/in/louis-sainsard-6857b130b/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link">
+                <img src="images/linkedin.png" alt="" class="footer-icon">
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="mailto:louis.sainsard@gmail.com" class="footer-link">
+                <img src="images/gmail.png" alt="" class="footer-icon">
+                <span>Mail</span>
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         MENU DÉROULANT
+         ============================== -->
+
+    <script>
+        const dropdowns = document.querySelectorAll(".dropdown");
+
+        dropdowns.forEach((dropdown) => {
+            const trigger = dropdown.querySelector(".dropdown-trigger");
+
+            trigger.addEventListener("click", (event) => {
+                event.stopPropagation();
+
+                const wasOpen = dropdown.classList.contains("open");
+
+                dropdowns.forEach((item) => {
+                    item.classList.remove("open");
+                    item.querySelector(".dropdown-trigger")
+                        .setAttribute("aria-expanded", "false");
+                });
+
+                if (!wasOpen) {
+                    dropdown.classList.add("open");
+                    trigger.setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".dropdown")) {
+                dropdowns.forEach((dropdown) => {
+                    dropdown.classList.remove("open");
+                    dropdown.querySelector(".dropdown-trigger")
+                        .setAttribute("aria-expanded", "false");
+                });
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                dropdowns.forEach((dropdown) => {
+                    dropdown.classList.remove("open");
+                    dropdown.querySelector(".dropdown-trigger")
+                        .setAttribute("aria-expanded", "false");
+                });
+            }
+        });</script>
+
+    <!-- Fenêtre de détails réutilisable -->
+    <div class="modal-overlay" id="project-modal"
+         onclick="closeProjectOutside(event)">
+        <div class="modal-content"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-title">
+
+            <button class="modal-close"
+                    onclick="closeProject()"
+                    aria-label="Fermer">
+                &times;
+            </button>
+
+            <h2 id="modal-title">Projet</h2>
+
+            <img id="modal-image"
+                 class="modal-image"
+                 src=""
+                 alt="">
+
+            <p id="modal-description"></p>
+
+            <a id="modal-link" class="modal-link" href="#" target="_blank" rel="noopener noreferrer">
+                Découvrir le projet
+            </a>
+
+            <a id="modal-skills-link" class="modal-link modal-skills-link" href="competences.html">
+                Voir les compétences associées
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const projects = {
+            1: {
+                title: "Projet 1",
+                description: "J’ai développé ce site web dans le cadre d’un projet de langue.\n\nObjectifs :\nUtiliser mes compétences en HTML et CSS ainsi qu’en anglais pour réaliser un site autour d’un sujet de mon choix.",
+                image: "images/autotimeline.png",
+                link: "https://zeihton.github.io/auto-timeline/",
+                skillsLink: "competences.html#competences-auto-timeline"
+            },
+            2: {
+                title: "Projet 2",
+                description: "Lors de ma formation à Polytech, j'ai réalisé en équipe ce robot dans le cadre d'un projet robot.\n\nObjectifs :\nUtiliser les compétences en mécanique, conception ainsi qu’en codage arduino pour réaliser un robot capable de suivre une ligne et de réaliser une << satellisation >>.",
+                image: "images/projet2.png",
+                link: "projet2.html",
+                skillsLink: "competences.html#competences-projet-2"
+            },
+            3: {
+                title: "Projet 3",
+                description: "Pour un projet informatique de fin d'année, j'ai développé ce site web de vente et location de voitures.\n\nObjectifs :\nUtiliser mes compétences en HTML et CSS et PHP pour réaliser ce site axé vente et location de véhicule (ici de luxe)",
+                image: "images/projet3.png",
+                link: "projet3.html",
+                skillsLink: "competences.html#competences-projet-3"
+            },
+            4: {
+                title: "Projet 4",
+                description: "Lors de ma deuxième année de BUT GMP, en équipe, j'ai dû concevoir et fabriquer un robot marcheur.\n\nObjectifs :\nUtiliser mes compétences en conception, gestion de projet, mécanique, usinage pour réaliser un robot marcheur capable d'effectuer une course",
+                image: "images/projet4.jpg",
+                link: "projet4.html",
+                skillsLink: "competences.html#competences-projet-4"
+            },
+            5: {
+                title: "Projet 5",
+                description: "Lors de mon stage de fin de deuxième année de BUT GMP, j'ai dû concevoir un banc didactique muni de brûleurs à hydrogène.\n\nObjectifs: \nUtiliser mes compétences en conception, dimensionnement, cotation, mécanique et mécanique des fluides pour mener à bien ce projet",
+                image: "images/projet5.png",
+                link: "projet5.html",
+                skillsLink: "competences.html#competences-projet-5"
+            },
+        };
+
+        function openProject(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            document.getElementById("modal-title").textContent = project.title;
+            document.getElementById("modal-description").textContent =
+                project.description;
+            const modalImage = document.getElementById("modal-image");
+            modalImage.style.display = project.image ? "block" : "none";
+            modalImage.onerror = function () {
+                modalImage.style.display = "none";
+            };
+            modalImage.onload = function () {
+                modalImage.style.display = "block";
+            };
+            modalImage.src = project.image || "";
+            modalImage.alt = project.title;
+
+            document.getElementById("modal-link").href = project.link;
+            document.getElementById("modal-skills-link").href =
+                project.skillsLink || "competences.html";
+
+            document.getElementById("project-modal").classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeProject() {
+            document.getElementById("project-modal").classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        function closeProjectOutside(event) {
+            if (event.target === event.currentTarget) {
+                closeProject();
+            }
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeProject();
+            }
+        });
+    </script>
+
+</body>
+</html>

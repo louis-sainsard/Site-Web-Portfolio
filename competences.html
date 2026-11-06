@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences | Louis Sainsard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==============================
+           1. STYLE GÉNÉRAL
+           ============================== */
+
+        :root {
+            --fond: #F5F4F0;
+            --fond-degrade: #E8EBEF;
+            --blanc: #FFFFFF;
+            --texte: #242729;
+            --secondaire: #777B7D;
+            --bordure: #DEDFDD;
+            --survol: #E9EAE7;
+            --ligne: #C9CBC8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient( 135deg, var(--fond) 0%, #F1F2F4 55%, var(--fond-degrade) 100% );
+            color: var(--texte);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ==============================
+   2. BANDEAU SUPÉRIEUR
+   ============================== */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 5%;
+            background-color: var(--fond);
+            border-bottom: 1px solid var(--bordure);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--texte);
+            font-size: 21px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .site-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .header-subtitle {
+            margin-top: 5px;
+            color: var(--secondaire);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+        }
+
+        .header-right {
+            color: var(--secondaire);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-align: right;
+        }
+
+        /* ==============================
+   3. MENU DE NAVIGATION
+   ============================== */
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            background-color: var(--blanc);
+            padding: 0 5%;
+            border-bottom: 1px solid var(--bordure);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            padding: 19px 24px;
+            border: none;
+            background: transparent;
+            color: var(--texte);
+            font: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+            .menu-item:hover,
+            .menu-item:focus-visible,
+            .dropdown:focus-within > .dropdown-trigger {
+                background-color: var(--survol);
+            }
+
+            .menu-item:focus-visible,
+            .dropdown-content a:focus-visible {
+                outline: 2px solid var(--texte);
+                outline-offset: -3px;
+            }
+
+        /* Menu déroulant */
+
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+
+        .dropdown-trigger {
+            white-space: nowrap;
+        }
+
+        .chevron {
+            font-size: 11px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background-color: var(--blanc);
+            border: 1px solid var(--bordure);
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            z-index: 10;
+        }
+
+            .dropdown-content a {
+                display: block;
+                padding: 14px 18px;
+                color: var(--texte);
+                font-size: 14px;
+                text-decoration: none;
+                transition: background-color 0.2s ease;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: var(--survol);
+                }
+
+        .dropdown-divider {
+            height: 1px;
+            margin: 0 12px;
+            background-color: var(--bordure);
+        }
+
+        /* Ouverture au survol et au clavier */
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content,
+        .dropdown.open .dropdown-content {
+            display: block;
+        }
+        /* ==============================
+           3. TITRE DE LA PAGE
+           ============================== */
+
+        .page-intro {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 75px 24px 55px;
+            text-align: center;
+        }
+
+            .page-intro h1 {
+                margin: 0;
+                font-size: clamp(36px, 5vw, 52px);
+                font-weight: 600;
+                letter-spacing: -1.8px;
+            }
+
+            .page-intro p {
+                margin: 18px auto 0;
+                max-width: 650px;
+                color: var(--secondaire);
+                font-size: 15px;
+                line-height: 1.8;
+            }
+
+        /* ==============================
+           4. TIMELINE DES PROJETS
+           ============================== */
+
+        .timeline {
+            position: relative;
+            width: min(1100px, 88%);
+            margin: 0 auto;
+            padding: 10px 0 60px;
+        }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 60px;
+                left: 50%;
+                width: 2px;
+                background: var(--ligne);
+                transform: translateX(-50%);
+            }
+
+        .timeline-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+            align-items: center;
+            margin-bottom: 45px;
+        }
+
+        .timeline-dot {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: center;
+            z-index: 1;
+            width: 14px;
+            height: 14px;
+            background: var(--texte);
+            border: 3px solid var(--fond);
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px var(--ligne);
+        }
+
+        .project-card {
+            min-height: 150px;
+            padding: 25px;
+            background: var(--blanc);
+            border: 1px solid var(--bordure);
+            border-radius: 10px;
+            box-shadow: 0 5px 18px rgba(36, 39, 41, 0.035);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .project-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 9px 25px rgba(36, 39, 41, 0.07);
+            }
+
+            .project-card h2 {
+                margin: 0;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .project-card p {
+                margin: 12px 0 0;
+                color: var(--secondaire);
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+        .timeline-item:nth-child(odd) .project-card {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .project-card {
+            grid-column: 3;
+            grid-row: 1;
+            text-align: left;
+        }
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            margin-top: 18px;
+            border-radius: 8px;
+        }
+
+        /* Fenêtre modale */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 22, 25, 0.55);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+            .modal-overlay.active {
+                display: flex;
+            }
+
+        .modal-content {
+            position: relative;
+            background: #F5F4F0;
+            color: #242729;
+            width: 100%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: modalAppear 0.25s ease;
+        }
+
+            .modal-content h2 {
+                margin-top: 0;
+                font-size: 26px;
+            }
+
+            .modal-content p {
+                line-height: 1.7;
+            }
+
+        /* Respecte les retours à la ligne dans les descriptions */
+        #modal-description {
+            white-space: pre-line;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 12px 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            border: none;
+            background: transparent;
+            color: #242729;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .modal-link {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 12px 18px;
+            background: #242729;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: opacity 0.2s;
+        }
+
+            .modal-link:hover {
+                opacity: 0.8;
+            }
+
+        /* Deuxième bouton : compétences associées */
+        .modal-skills-link {
+            background: transparent;
+            color: #242729;
+            border: 1px solid #242729;
+            margin-left: 8px;
+        }
+
+        .modal-skills-link:hover {
+            background: #E8EBEF;
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .modal-link {
+                display: block;
+                text-align: center;
+                margin-left: 0;
+            }
+        }
+
+        .project-card {
+            cursor: pointer;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ==============================
+           5. PIED DE PAGE
+           ============================== */
+
+
+        /* Cartes de compétences */
+        .skills-container {
+            width: min(1000px, 88%);
+            margin: 0 auto;
+            padding: 0 0 70px;
+        }
+
+        .project-skills {
+            scroll-margin-top: 24px;
+            margin-bottom: 24px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid var(--bordure);
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(36, 39, 41, 0.035);
+        }
+
+        .project-number {
+            color: var(--secondaire);
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .project-skills h2 {
+            margin: 8px 0 0;
+            font-size: clamp(21px, 3vw, 27px);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .project-context {
+            margin: 14px 0 22px;
+            color: var(--secondaire);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .skills-label {
+            margin: 0 0 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin: 0 0 22px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 9px 12px;
+            background: #F1F2F0;
+            border: 1px solid var(--bordure);
+            border-radius: 7px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding-top: 18px;
+            border-top: 1px solid var(--bordure);
+        }
+
+        .project-footer p {
+            margin: 0;
+            color: var(--secondaire);
+            font-size: 13px;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 14px;
+            border: 1px solid var(--texte);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .project-link:hover {
+            background: var(--texte);
+            color: var(--blanc);
+        }
+
+        @media (max-width: 600px) {
+            .skills-container { width: calc(100% - 30px); }
+            .project-skills { padding: 22px 18px; }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 6%;
+            background: rgba(255, 255, 255, 0.55);
+            border-top: 1px solid var(--bordure);
+            flex-wrap: wrap;
+        }
+
+        .footer-copy {
+            margin: 0;
+            color: var(--secondaire);
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            transition: opacity 0.2s ease;
+        }
+
+            .footer-link:hover {
+                opacity: 0.65;
+            }
+
+        .footer-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        /* ==============================
+           6. ADAPTATION AUX PETITS ÉCRANS
+           ============================== */
+
+        @media (max-width: 900px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .navigation {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navigation {
+                gap: 4px;
+            }
+
+            .menu-item {
+                padding: 9px 8px;
+                font-size: 12px;
+            }
+
+            .page-intro {
+                padding: 55px 22px 40px;
+            }
+
+            .timeline {
+                width: 100%;
+                padding: 10px 20px 40px 28px;
+            }
+
+                .timeline::before {
+                    left: 7px;
+                    bottom: 40px;
+                }
+
+            .timeline-item {
+                grid-template-columns: 15px minmax(0, 1fr);
+                column-gap: 18px;
+                margin-bottom: 25px;
+            }
+
+            .timeline-dot {
+                grid-column: 1;
+                grid-row: 1;
+                justify-self: center;
+                align-self: start;
+                margin-top: 27px;
+            }
+
+            .timeline-item:nth-child(odd) .project-card,
+            .timeline-item:nth-child(even) .project-card {
+                grid-column: 2;
+                grid-row: 1;
+                text-align: left;
+            }
+
+            .project-card {
+                min-height: 125px;
+                padding: 20px;
+            }
+
+    
+        /* Cartes de compétences */
+        .skills-container {
+            width: min(1000px, 88%);
+            margin: 0 auto;
+            padding: 0 0 70px;
+        }
+
+        .project-skills {
+            scroll-margin-top: 24px;
+            margin-bottom: 24px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid var(--bordure);
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(36, 39, 41, 0.035);
+        }
+
+        .project-number {
+            color: var(--secondaire);
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .project-skills h2 {
+            margin: 8px 0 0;
+            font-size: clamp(21px, 3vw, 27px);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .project-context {
+            margin: 14px 0 22px;
+            color: var(--secondaire);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .skills-label {
+            margin: 0 0 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin: 0 0 22px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 9px 12px;
+            background: #F1F2F0;
+            border: 1px solid var(--bordure);
+            border-radius: 7px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding-top: 18px;
+            border-top: 1px solid var(--bordure);
+        }
+
+        .project-footer p {
+            margin: 0;
+            color: var(--secondaire);
+            font-size: 13px;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 14px;
+            border: 1px solid var(--texte);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .project-link:hover {
+            background: var(--texte);
+            color: var(--blanc);
+        }
+
+        @media (max-width: 600px) {
+            .skills-container { width: calc(100% - 30px); }
+            .project-skills { padding: 22px 18px; }
+        }
+
+        .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+     BANDEAU SUPÉRIEUR
+     ============================== -->
+
+    <header class="header">
+
+        <div class="header-left">
+            <a class="logo"
+               aria-label="Retour à la présentation">
+                LS
+            </a>
+
+            <div>
+                <h1 class="site-title">LOUIS SAINSARD</h1>
+                <div class="header-subtitle">PORTFOLIO PERSONNEL</div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            PROJETS · PARCOURS · EXPÉRIENCES
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         MENU DE NAVIGATION
+         ============================== -->
+
+    <nav class="menu" aria-label="Navigation principale">
+
+        <a href="accueil.html"
+           class="menu-item"
+           >
+            Accueil
+        </a>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                Projets et Compétences <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="projets.html">Tous mes projets</a>
+                <div class="dropdown-divider"></div>
+                <a href="competences.html" aria-current="page">Compétences</a>
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                Parcours <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="parcours-etudiant.html">Parcours étudiant</a>
+                <div class="dropdown-divider"></div>
+                <a href="experiences.html">Expériences professionnelles</a>
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                À propos <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         CONTENU SPÉCIFIQUE : PROJETS
+         ============================== -->
+
+    <main>
+        <section class="page-intro">
+            <h1>Mes compétences</h1>
+            <p>Retrouvez les compétences mobilisées à travers mes différents projets, de la programmation à la conception mécanique, en passant par le travail en équipe.</p>
+        </section>
+
+        <div class="skills-container">
+            <section class="project-skills" id="competences-auto-timeline">
+                <div class="project-number">Projet 01</div>
+                <h2>Développement du site Auto Timeline</h2>
+                <p class="project-context">Réalisation d’un site web dans le cadre d’un projet de langue, autour d’un sujet choisi.</p>
+                <h3 class="skills-label">Compétences mobilisées</h3>
+                <ul class="skill-list">
+                    <li>HTML</li><li>CSS</li><li>Structuration d’une page web</li><li>Intégration et mise en forme</li><li>Anglais</li>
+                </ul>
+                <div class="project-footer">
+                    <p>Projet web · Programmation et langue</p>
+                    <a class="project-link" href="https://zeihton.github.io/auto-timeline/" target="_blank" rel="noopener noreferrer">Voir le site</a>
+                </div>
+            </section>
+
+            <section class="project-skills" id="competences-projet-2">
+                <div class="project-number">Projet 02</div>
+                <h2>Robot satelliseur</h2>
+                <p class="project-context">Projet d’équipe réalisé à Polytech : concevoir un robot capable de suivre une ligne et de réaliser une « satellisation ».</p>
+                <h3 class="skills-label">Compétences mobilisées</h3>
+                <ul class="skill-list">
+                    <li>Travail en équipe</li><li>Mécanique</li><li>Conception</li><li>Programmation Arduino</li><li>Intégration des éléments du robot</li>
+                </ul>
+                <div class="project-footer">
+                    <p>Robotique · Projet en équipe</p>
+                    <a class="project-link" href="projet2.html">Voir le projet</a>
+                </div>
+            </section>
+
+            <section class="project-skills" id="competences-projet-3">
+                <div class="project-number">Projet 03</div>
+                <h2>Site de vente et location de véhicules</h2>
+                <p class="project-context">Développement d’un site web consacré à la vente et à la location de véhicules de luxe, dans le cadre d’un projet informatique de fin d’année.</p>
+                <h3 class="skills-label">Compétences mobilisées</h3>
+                <ul class="skill-list">
+                    <li>HTML</li><li>CSS</li><li>PHP</li><li>Structuration d’un site web</li><li>Conception d’une interface</li>
+                </ul>
+                <div class="project-footer">
+                    <p>Développement web · Projet informatique</p>
+                    <a class="project-link" href="projet3.html">Voir le projet</a>
+                </div>
+            </section>
+
+            <section class="project-skills" id="competences-projet-4">
+                <div class="project-number">Projet 04</div>
+                <h2>Conception d’un robot marcheur</h2>
+                <p class="project-context">Projet mené en équipe en deuxième année de BUT GMP, avec pour objectif de concevoir et fabriquer un robot marcheur capable de participer à une course.</p>
+                <h3 class="skills-label">Compétences mobilisées</h3>
+                <ul class="skill-list">
+                    <li>Conception mécanique</li><li>Mécanique</li><li>Usinage</li><li>Gestion de projet</li><li>Travail en équipe</li><li>Fabrication d’un prototype</li>
+                </ul>
+                <div class="project-footer">
+                    <p>Conception et fabrication · Projet en équipe</p>
+                    <a class="project-link" href="projet4.html">Voir le projet</a>
+                </div>
+            </section>
+
+            <section class="project-skills" id="competences-projet-5">
+                <div class="project-number">Projet 05</div>
+                <h2>Banc didactique avec brûleurs à hydrogène</h2>
+                <p class="project-context">Projet de stage de fin de deuxième année de BUT GMP : conception d’un banc didactique muni de brûleurs à hydrogène.</p>
+                <h3 class="skills-label">Compétences mobilisées</h3>
+                <ul class="skill-list">
+                    <li>Conception</li><li>Dimensionnement</li><li>Cotation</li><li>Mécanique</li><li>Mécanique des fluides</li>
+                </ul>
+                <div class="project-footer">
+                    <p>Stage · Conception mécanique</p>
+                    <a class="project-link" href="projet5.html">Voir le projet</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+    <!-- ==============================
+         PIED DE PAGE COMMUN
+         ============================== -->
+
+    <footer class="footer">
+
+        <p class="footer-copy">© 2026 — Portfolio</p>
+
+        <div class="footer-links">
+
+            <a href="https://www.linkedin.com/in/louis-sainsard-6857b130b/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link">
+                <img src="images/linkedin.png" alt="" class="footer-icon">
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="mailto:louis.sainsard@gmail.com" class="footer-link">
+                <img src="images/gmail.png" alt="" class="footer-icon">
+                <span>Mail</span>
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         MENU DÉROULANT
+         ============================== -->
+
+    <script>
+        const dropdowns = document.querySelectorAll(".dropdown");
+
+        dropdowns.forEach((dropdown) => {
+            const trigger = dropdown.querySelector(".dropdown-trigger");
+
+            trigger.addEventListener("click", (event) => {
+                event.stopPropagation();
+
+                const wasOpen = dropdown.classList.contains("open");
+
+                dropdowns.forEach((item) => {
+                    item.classList.remove("open");
+                    item.querySelector(".dropdown-trigger")
+                        .setAttribute("aria-expanded", "false");
+                });
+
+                if (!wasOpen) {
+                    dropdown.classList.add("open");
+                    trigger.setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".dropdown")) {
+                dropdowns.forEach((dropdown) => {
+                    dropdown.classList.remove("open");
+                    dropdown.querySelector(".dropdown-trigger")
+                        .setAttribute("aria-expanded", "false");
+                });
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                dropdowns.forEach((dropdown) => {
+                    dropdown.classList.remove("open");
+                    dropdown.querySelector(".dropdown-trigger")
+                        .setAttribute("aria-expanded", "false");
+                });
+            }
+        });</script>
+
+</body>
+</html>

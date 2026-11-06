@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5 | Robot Marcheur</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fond: #F5F4F0;
+            --fond-degrade: #E8EBEF;
+            --blanc: #FFFFFF;
+            --texte: #242729;
+            --secondaire: #777B7D;
+            --bordure: #DEDFDD;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--fond) 0%, #F1F2F4 55%, var(--fond-degrade) 100%);
+            color: var(--texte);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: min(100% - 40px, 1000px);
+            margin: 0 auto;
+            padding: 64px 0 48px;
+        }
+
+        .intro {
+            margin-bottom: 44px;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--secondaire);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 800px;
+            font-size: clamp(34px, 6vw, 54px);
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 22px 0 0;
+            color: var(--secondaire);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .steps {
+            display: grid;
+            gap: 22px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            gap: 22px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid var(--bordure);
+            border-radius: 18px;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #C9CBC8;
+            border-radius: 50%;
+            color: var(--texte);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .step h2 {
+            margin: 2px 0 12px;
+            font-size: 21px;
+            line-height: 1.35;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #555A5C;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            margin-top: 20px;
+            padding: 24px;
+            border: 1px dashed #BFC2C1;
+            border-radius: 12px;
+            background: rgba(245, 244, 240, 0.65);
+            color: var(--secondaire);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Les images restent à l'échelle, sans déformation ni débordement. */
+        .step-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            margin: 20px auto 0;
+            border-radius: 12px;
+        }
+
+        .image-source {
+            margin: 8px 0 0;
+            color: var(--secondaire);
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .return-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 42px;
+        }
+
+        .return-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border: 1px solid var(--texte);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--texte);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+            .return-button:hover {
+                background: var(--texte);
+                color: var(--blanc);
+                transform: translateY(-2px);
+            }
+
+        @media (max-width: 600px) {
+            .page {
+                width: min(100% - 28px, 1000px);
+                padding-top: 40px;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 22px;
+            }
+
+            .step-number {
+                width: 42px;
+                height: 42px;
+            }
+
+            .intro {
+                margin-bottom: 30px;
+            }
+
+            .step-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="intro">
+            <p class="eyebrow">Projet 05 · Conception</p>
+            <h1>Conception d’un robot marcheur</h1>
+            <p class="intro-text">
+                Dans le cadre de ma deuxième année, j'ai réalisé mon stage de 11 semaines dans le laboratoire PRISME à l'université d'Orléans. Mon objectif en lien avec un projet de l'université était de concevoir un banc didactique qui serait installé dans une nouvelle salle d'expérimentation. Ce banc didactique devait être composé de 4 brûleurs à hydrogène, permettant la combustion de ce gaz. Ceci était prévu pour des étudiants de l'université, pour réaliser des expériences et observer les flammes lors de la combustion.
+            </p>
+        </section>
+
+        <div class="steps">
+            <section class="step">
+                <div class="step-number">01</div>
+                <div>
+                    <h2>Etude d'un banc déjà existant</h2>
+                    <p>
+                        Pour m'aider dans ma conception, un banc avait déjà été construit dans l'une des salles du laboratoire. J'ai donc pu étudier la structure de celui-ci pour commencer la conception de mon banc.
+                        <br />
+                        Un rail d'une caméra était installé sur le banc, j'avais pour objectif d'en concevoir également un mais muni de plusieurs caméras.
+                    </p>
+                    <img class="step-image"
+                         src="images/structure.jpg"
+                         alt="Structure exemple">
+
+                    <p class="image-source">
+                        Un banc de combustion déjà installé au laboratoire
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">02</div>
+                <div>
+                    <h2>Conception de la structure</h2>
+                    <p>
+                        Je suis donc passé à la conception de la structure du banc sur SolidWorks. J'ai récupéré le fichiers 3D des éléments (notamment des profilés) et déterminé la taille de mon banc en laissant la place nécessaire pour l'ajout des 4 brûleurs. Dans cette partie, la difficulté était de concevoir dans les bonnes dimensions la hotte du banc. Je devais laisser un jeu nécessaire pour qu'elle puisse être correctement installée sur les profilés. Je suis aussi parti du principe que je devais alisser la palce nécessaire pour l'ajout des instruments de mesures. J'ai donc installé des étagères réglables qui s'ajustent sur les profilés'
+                       </p>
+
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">03</div>
+                <div>
+                    <h2>Conception des brûleurs</h2>
+                    <p>
+                        J'ai eu la possibilité de concevoir deux brûleurs. Un troisièmme m'a été directement donné en CAO pour que je l'ajoute à mon banc, le brûleur HYLON TNF.Ce a la particularité d’être conçu avec une pièce complexe placée juste avant la partie de combustion. Cette pièce munie d’ailettes crée un mouvement de swirl favorisant un mélange entre le gaz et l’air. Cela permet donc de stabiliser la flamme de la combustion.
+                    </p>
+                    <img class="step-image"
+                         src="images/hylon.png"
+                         alt="hylon">
+
+                    <p class="image-source">
+                        Brûleur Hylon
+                    </p>
+                    <br />
+                    <p>
+                        Le premier brûleur que j'ai conçu s'apelle le brûleur laminaire ou bec Bunsen. C'est un brûleur conçu pour un gaz combustible de manière stable et contrôlée.
+                        Bien mélangé avec l’air, le gaz va alors se diriger vers la sortie du tube et s’enflammer pour créer la flamme. La vitesse d’écoulement étant stabilisée avec la vitesse de propagation de la flamme, un retour de flamme ne peut pas se produire. Cette forme laminaire du brûleur permet peu de turbulence, ce qui est justement important pour la stabilisation.
+                    </p>
+                    <img class="step-image"
+                         src="images/laminaire.png"
+                         alt="Brûleur laminaire">
+
+                    <p class="image-source">
+                        Brûleur laminaire
+                    </p>
+                    <br />
+                    La difficulté lors de ma conception était justement de permettre un mélange correct entre mon air et mon gaz. J'ai conçu alors un couvercle muni de raccords d'arrivée de gaz. Grâce à un sytème, mon air arrive tangentiellement à mon gaz, qui lui est diffusé grâce à un petit tube muni de trou. L'air peut se charger en gaz et mon mélange est correctement effectué.
+
+                    <img class="step-image"
+                         src="images/diffuseur.png"
+                         alt="Couvercle">
+
+                    <p class="image-source">
+                        Couvercle avec diffusion du gaz (l'air arrive tangentiellement à la pièce en forme de tube munie de trous)
+                    </p>
+                    <img class="step-image"
+                         src="images/trous.jpg"
+                         alt="Pièce diffuseur">
+
+                    <p class="image-source">
+                        Ancien Brûleur avec le raccord munie de la rallonge/tube munie de trous
+                    </p>
+
+                    <br />
+
+                    <p>
+                        Pour permettre une bonne étanchéité à mon système, j'ai dû concevoir des gorges à joints toriques en haut de mon brûleur et dans le couvercle.
+                    </p>
+                    <img class="step-image"
+                         src="images/joint.png"
+                         alt="Joint">
+
+                    <p class="image-source">
+                        Couvercle avec les gorges pour les joints
+                    </p>
+                    <br />
+                    <p>
+                        Pour mon dernier brûleur, il était beaucoup plus simple et comportait moins de contraintes. Le gaz seul arrive et remonte dans un conduit. Ce conduit se rétrécit et permet donc grâce au débit la combustion avec l'air en haut de mon brûleur. La seule contrainte que je me suis fixée, était de reproduire un brûleur de la même hauteur que le précédent pour ne pas avoir à modifier le support et avoir deux fois le même.
+                    </p>
+                    <img class="step-image"
+                         src="images/bruleurdroit.png"
+                         alt="Brûleur droit">
+
+                    <p class="image-source">
+                        Brûleur droit
+                    </p>
+
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">04</div>
+                <div>
+                    <h2>Conception du rail de caméras</h2>
+                    <p>
+                        La conception du rail de caméras permetait de se fixer une idée sur les possibilités d'installations, mais n'était pas définitive. J'ai conçu mon sytème sur des rails Bosch avec la possibilités des caméras de se déplacer selon différents axes, pour permettre une adaptation optimale.
+                    </p>
+                    <img class="step-image"
+                         src="images/rail.png"
+                         alt="Rail">
+
+                    <p class="image-source">
+                        Rail de caméras
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">05</div>
+                <div>
+                    <h2>Vue globale du banc et plans</h2>
+                    <p>
+                        La suite de mon projet a été de réaliser les plans de mes brûleurs pour les faire fabriquer par des sous-traitants. Je n'ai malheuresement pas pu voir la fabrication des mes brûleurs car mon stage arrivait à son terme.
+                    </p>
+                    <img class="step-image"
+                         src="images/plan.png"
+                         alt="Plans">
+
+                    <p class="image-source">
+                        Plans du brûleur laminaire
+                    </p>
+
+                    <img class="step-image"
+                         src="images/projet5.png"
+                         alt="Banc didactique">
+
+                    <p class="image-source">
+                        Vue globale du banc en CAO
+                    </p>
+                </div>
+            </section>
+
+
+        </div>
+
+        <div class="return-area">
+            <a class="return-button" href="projets.html"><span aria-hidden="true">←</span> Retour aux projets</a>
+        </div>
+    </main>
+</body>
+</html>

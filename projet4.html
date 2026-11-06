@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 4 | Robot Marcheur</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fond: #F5F4F0;
+            --fond-degrade: #E8EBEF;
+            --blanc: #FFFFFF;
+            --texte: #242729;
+            --secondaire: #777B7D;
+            --bordure: #DEDFDD;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--fond) 0%, #F1F2F4 55%, var(--fond-degrade) 100%);
+            color: var(--texte);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: min(100% - 40px, 1000px);
+            margin: 0 auto;
+            padding: 64px 0 48px;
+        }
+
+        .intro {
+            margin-bottom: 44px;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--secondaire);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 800px;
+            font-size: clamp(34px, 6vw, 54px);
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 22px 0 0;
+            color: var(--secondaire);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .steps {
+            display: grid;
+            gap: 22px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            gap: 22px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid var(--bordure);
+            border-radius: 18px;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #C9CBC8;
+            border-radius: 50%;
+            color: var(--texte);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .step h2 {
+            margin: 2px 0 12px;
+            font-size: 21px;
+            line-height: 1.35;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #555A5C;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            margin-top: 20px;
+            padding: 24px;
+            border: 1px dashed #BFC2C1;
+            border-radius: 12px;
+            background: rgba(245, 244, 240, 0.65);
+            color: var(--secondaire);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Les images restent à l'échelle, sans déformation ni débordement. */
+        .step-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            margin: 20px auto 0;
+            border-radius: 12px;
+        }
+
+        .image-source {
+            margin: 8px 0 0;
+            color: var(--secondaire);
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .return-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 42px;
+        }
+
+        .return-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border: 1px solid var(--texte);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--texte);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+            .return-button:hover {
+                background: var(--texte);
+                color: var(--blanc);
+                transform: translateY(-2px);
+            }
+
+        @media (max-width: 600px) {
+            .page {
+                width: min(100% - 28px, 1000px);
+                padding-top: 40px;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 22px;
+            }
+
+            .step-number {
+                width: 42px;
+                height: 42px;
+            }
+
+            .intro {
+                margin-bottom: 30px;
+            }
+
+            .step-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="intro">
+            <p class="eyebrow">Projet 04 · Robotique</p>
+            <h1>Conception d’un robot marcheur</h1>
+            <p class="intro-text">
+                Dans le cadre d’un projet en équipe à l'IUT, nous avons conçu, en équipe, et réalisé un robot ayant pour but de participer à une course interclasse. Cette page présente les grandes étapes du projet.
+            </p>
+        </section>
+
+        <div class="steps">
+            <section class="step">
+                <div class="step-number">01</div>
+                <div>
+                    <h2>Choix de la solution - Etude de l'existant</h2>
+                    <p>Un cahier des charges nous a été fournis, faisant référence à un concours passé de BUT GMP. Notre objectif était donc, à partir d'éléments comme une batterie, un moteur essui-glace, un servo-moteur et une radio commande, de concevoir un robot. La première
+                    étape consistait donc à rechercher le moyen de créer le train avant, le train arrière, et notre transmission. Le robot devait se déplacer uniquement grâce aux pattes et se diriger grâce à deux roues liées à notre train avant, dirigé par le servo-moteur. Pour cela, nous avons recherché différentes solutions existantes pour nous inspirer.</p>
+                    <img class="step-image"
+                         src="images/robexemple.png"
+                         alt="Robot exemple">
+
+                    <p class="image-source">
+                        L'une des solutions trouvées pour nous inspirer
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">02</div>
+                <div>
+                    <h2>Conception</h2>
+                    <p>
+                        Nous sommes donc parti sur un train avant muni de bielles pivotantes et de deux fusées pour maintenir les roues. Notre train arrière est constitué de quatre pattes avec un appui ponctuel sur le sol et d'un sorte de vilebrequin assurant une phase entre nos pattes. La transmission est assurée par une chaîne et deux pignons liés au moteur et au vilebrequin.
+                    <br />
+                    Nous avons réparti notre travail au sein du groupe et j'étais pour ma part sur la conception du train arrière. Cette phase de conception se déroulait sur CREO. L'objectif de notre fin de conception était d'animer le robot pour le voir marcher. La difficulté rencontrée était de réussir à placer correctment les pattes avec le vilebrequin, et que celui ci soit correctement conçu pour permettre d'avoir toujours deux pattes liés ensemble en terme de phase. Une deuxième difficulté était le placement de notre ensemble sur le bâti. Avec un poids imporant à l'arrière, il fallait assurer un bon maintien sur le bâti et que le vilebrequin soit bien adaptée à notre chaîne de transmission.
+                    </p>
+                    <img class="step-image"
+                         src="images/projet4.jpg"
+                         alt="Conception robot">
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">03</div>
+                <div>
+                    <h2>Fabrication - Usinage</h2>
+                    <p>La prochaine étape était la fabrication du robot. Au préalable, nous avions réalisé nos plans et créé nos gammes de fabrication. Nous avions à disposition les machines d'usinage de l'IUT, notamment des tours d'usinage tradionnel et une découpe jet d'eau pour la découpe de nos pièces.</p>
+                    <img class="step-image"
+                         src="images/usinage.jpg"
+                         alt="Usinage arbre">
+
+                    <p class="image-source">
+                        Usinage d'un arbre du train arrière
+                    </p>
+                    <img class="step-image"
+                         src="images/jetdeau.jpg"
+                         alt="Découpe jet d'eau'">
+
+                    <p class="image-source">
+                        Découpe jet d'eau
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">04</div>
+                <div>
+                    <h2>Montage</h2>
+                    <p>Nous sommes ensuite passé à la phase du montage du robot, et c'est cette partie qui nous a causé les plus de problèmes. Nous avions choisi de découper nos pièces dans l'aluminium pour respecter le poids maximum du cahier des charges. Or pour construire notre vilebrequin, nous avions besoin de souder des parties entre elles. Le soudage sur aluminium étant difficile à réaliser, nous avons demandé de l'aide à un ouvrier de l'atelier. Les soudures étaient extrêment fragiles et rendaient le montage des pattes très délicat.
+                    </p>
+                    <img class="step-image"
+                         src="images/montage4.jpg"
+                         alt="montage" >
+
+                    <p class="image-source">
+                       Montage du robot
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">05</div>
+                <div>
+                    <h2>Course</h2>
+                    <p>Finalement nous sommes arrivés le jour de la course. Les soudures de notre vilebrequin n'ont pas tenu et les fusées des roues (faites en impression 3D) ont cassé. Nous n'avons donc pas pu concourir et réaliser la course. Cependant, au vu de l'avancée de notre projet, nous étions contents de notre parcours.
+                    </p>
+                    <img class="step-image"
+                         src="images/final.jpg"
+                         alt="Robot final" >
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+
+            
+        </div>
+
+        <div class="return-area">
+            <a class="return-button" href="projets.html"><span aria-hidden="true">←</span> Retour aux projets</a>
+        </div>
+    </main>
+</body>
+</html>

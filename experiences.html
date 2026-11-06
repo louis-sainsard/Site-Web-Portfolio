@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expériences professionnelles | Louis Sainsard</title>
+
+    <!-- Police d'écriture -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* ==============================
+           1. STYLE GÉNÉRAL
+           ============================== */
+
+        :root {
+            --fond: #f7f7f5;
+            --blanc: #ffffff;
+            --texte: #242729;
+            --secondaire: #777b7d;
+            --bordure: #dedfdd;
+            --survol: #e9eae7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient( 135deg, #F5F4F0 0%, #F1F2F4 55%, #E8EBEF 100% );
+            color: var(--texte);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* ==============================
+           2. BANDEAU SUPÉRIEUR
+           ============================== */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 5%;
+            background-color: var(--fond);
+            border-bottom: 1px solid var(--bordure);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--texte);
+            font-size: 21px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .site-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .header-subtitle {
+            margin-top: 5px;
+            color: var(--secondaire);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+        }
+
+        .header-right {
+            color: var(--secondaire);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-align: right;
+        }
+
+        /* ==============================
+           3. MENU DE NAVIGATION
+           ============================== */
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            background-color: var(--blanc);
+            padding: 0 5%;
+            border-bottom: 1px solid var(--bordure);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            padding: 19px 24px;
+            border: none;
+            background: transparent;
+            color: var(--texte);
+            font: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+            .menu-item:hover,
+            .menu-item:focus-visible,
+            .dropdown:focus-within > .dropdown-trigger {
+                background-color: var(--survol);
+            }
+
+            .menu-item:focus-visible,
+            .dropdown-content a:focus-visible {
+                outline: 2px solid var(--texte);
+                outline-offset: -3px;
+            }
+
+        /* Menu déroulant */
+
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+
+        .dropdown-trigger {
+            white-space: nowrap;
+        }
+
+        .chevron {
+            font-size: 11px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background-color: var(--blanc);
+            border: 1px solid var(--bordure);
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            z-index: 10;
+        }
+
+            .dropdown-content a {
+                display: block;
+                padding: 14px 18px;
+                color: var(--texte);
+                font-size: 14px;
+                text-decoration: none;
+                transition: background-color 0.2s ease;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: var(--survol);
+                }
+
+        .dropdown-divider {
+            height: 1px;
+            margin: 0 12px;
+            background-color: var(--bordure);
+        }
+
+        /* Ouverture au survol et au clavier */
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content,
+        .dropdown.open .dropdown-content {
+            display: block;
+        }
+
+        /* ==============================
+           4. SECTION PRINCIPALE
+           ============================== */
+
+        .hero {
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+            text-align: center;
+            background-color: var(--fond);
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 28px;
+            padding: 10px 16px;
+            border: 1px solid #c9cbc8;
+            border-radius: 7px;
+            color: var(--secondaire);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: clamp(36px, 5vw, 62px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            margin: 20px 0;
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--secondaire);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        /* Présentation personnelle : photo et paragraphe côte à côte */
+        .hero-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            max-width: 760px;
+            margin: 32px auto 0;
+            text-align: left;
+        }
+
+        .profile-photo {
+            display: block;
+            flex: 0 0 190px;
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50% / 35%;
+            border: 1px solid var(--bordure);
+        }
+
+        .profile-text {
+            flex: 1;
+            margin: 0;
+            color: var(--secondaire);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 48px;
+            padding: 13px 22px;
+            border: 1px solid var(--texte);
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--texte);
+            color: var(--blanc);
+        }
+
+            .btn-primary:hover {
+                background-color: transparent;
+                color: var(--texte);
+            }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--texte);
+        }
+
+            .btn-secondary:hover {
+                background-color: var(--survol);
+            }
+
+        /* ==============================
+           5. APERÇU DES RUBRIQUES
+           ============================== */
+
+        .sections {
+            padding: 65px 7%;
+            background-color: var(--blanc);
+            border-top: 1px solid var(--bordure);
+        }
+
+        .sections-heading {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+
+            .sections-heading h2 {
+                margin: 0 0 12px;
+                font-size: 30px;
+                letter-spacing: -0.8px;
+            }
+
+            .sections-heading p {
+                margin: 0;
+                color: var(--secondaire);
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 27px;
+            border: 1px solid var(--bordure);
+            border-radius: 8px;
+            background-color: var(--fond);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-3px);
+                border-color: #b8bbb7;
+            }
+
+        .card-number {
+            color: var(--secondaire);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .card h3 {
+            margin: 20px 0 12px;
+            font-size: 19px;
+        }
+
+        .card p {
+            margin: 0 0 22px;
+            color: var(--secondaire);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .card-link {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+            .card-link:hover {
+                text-decoration: underline;
+            }
+
+        /* ==============================
+           6. PIED DE PAGE
+           ============================== */
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 6%;
+            border-top: 1px solid var(--bordure);
+            flex-wrap: wrap;
+        }
+
+        .footer-copy {
+            margin: 0;
+            color: var(--secondaire);
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--texte);
+            text-decoration: none;
+            font-size: 13px;
+            transition: opacity 0.2s ease;
+        }
+
+            .footer-link:hover {
+                opacity: 0.65;
+            }
+
+        .footer-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 600px) {
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ==============================
+           7. VERSION TABLETTE ET MOBILE
+           ============================== */
+
+        @media (max-width: 800px) {
+            .menu {
+                flex-wrap: wrap;
+                padding: 0 2%;
+            }
+
+            .menu-item {
+                padding: 16px 13px;
+                font-size: 13px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero {
+                min-height: 450px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                width: 43px;
+                height: 43px;
+                font-size: 17px;
+            }
+
+            .site-title {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .header-right {
+                display: none;
+            }
+
+            .menu {
+                justify-content: flex-start;
+                padding: 0;
+            }
+
+            .menu-item {
+                padding: 14px 12px;
+                font-size: 12px;
+            }
+
+            .dropdown-content {
+                min-width: 210px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 80px 22px;
+            }
+
+                .hero h2 {
+                    letter-spacing: -1px;
+                }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-profile {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .profile-photo {
+                flex-basis: auto;
+                width: 160px;
+                height: 160px;
+            }
+
+            .profile-text {
+                font-size: 14px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sections {
+                padding: 50px 22px;
+            }
+
+            .sections-heading h2 {
+                font-size: 26px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                line-height: 1.7;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+        .hero-video {
+            max-width: 760px;
+            margin: 42px auto 0;
+        }
+
+        .hero-video-title {
+            margin-bottom: 18px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .presentation-video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            height: auto;
+            border: 1px solid var(--bordure);
+            border-radius: 8px;
+            background: #000;
+        }
+
+        /* ==============================
+           PARCOURS ÉTUDIANT
+           ============================== */
+
+        .education-section {
+            padding: 70px 7% 80px;
+            background-color: var(--fond);
+        }
+
+        .education-heading {
+            max-width: 760px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .education-heading .section-kicker {
+            margin: 0 0 14px;
+            color: var(--secondaire);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .education-heading h2 {
+            margin: 0;
+            font-size: clamp(32px, 4.5vw, 48px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+        }
+
+        .education-intro {
+            max-width: 650px;
+            margin: 18px auto 0;
+            color: var(--secondaire);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .education-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: "";
+            position: absolute;
+            top: 18px;
+            bottom: 18px;
+            left: 142px;
+            width: 1px;
+            background-color: var(--bordure);
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 112px minmax(0, 1fr);
+            gap: 60px;
+            position: relative;
+            margin-bottom: 26px;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-date {
+            padding-top: 26px;
+            color: var(--secondaire);
+            font-size: 12px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .education-card {
+            position: relative;
+            padding: 26px 28px;
+            border: 1px solid var(--bordure);
+            border-radius: 8px;
+            background-color: var(--blanc);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-2px);
+            border-color: #b8bbb7;
+        }
+
+        .education-card::before {
+            content: "";
+            position: absolute;
+            top: 29px;
+            left: -39px;
+            width: 11px;
+            height: 11px;
+            border: 3px solid var(--fond);
+            border-radius: 50%;
+            background-color: var(--secondaire);
+            box-shadow: 0 0 0 1px var(--bordure);
+        }
+
+        .education-card h3 {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.45;
+            font-weight: 600;
+        }
+
+        .education-institution {
+            margin: 8px 0 0;
+            color: var(--secondaire);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+
+        /* Images associées à chaque formation ou expérience */
+        .education-image {
+            display: block;
+            width: 100%;
+            max-height: 280px;
+            margin: 18px 0 0;
+            overflow: hidden;
+            border: 1px solid var(--bordure);
+            border-radius: 7px;
+            background-color: var(--fond);
+        }
+
+        .education-image img {
+            display: block;
+            width: 100%;
+            max-height: 280px;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .education-image figcaption {
+            padding: 9px 12px;
+            color: var(--secondaire);
+            font-size: 11px;
+            line-height: 1.6;
+            background-color: var(--blanc);
+        }
+
+        @media (max-width: 560px) {
+            .education-image,
+            .education-image img {
+                max-height: 220px;
+            }
+        }
+
+        .education-description {
+            margin: 18px 0 0;
+            color: var(--secondaire);
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .education-details {
+            margin: 16px 0 0;
+            padding-left: 19px;
+            color: var(--secondaire);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .education-details li {
+            padding-left: 3px;
+            margin: 5px 0;
+        }
+
+        .education-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .education-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid var(--bordure);
+            border-radius: 5px;
+            color: var(--secondaire);
+            font-size: 11px;
+        }
+
+        .education-note {
+            max-width: 900px;
+            margin: 30px auto 0;
+            color: var(--secondaire);
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .education-back {
+            display: flex;
+            justify-content: center;
+            margin-top: 42px;
+        }
+
+        .education-back a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: 1px solid var(--texte);
+            border-radius: 5px;
+            color: var(--texte);
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .education-back a:hover {
+            background-color: var(--texte);
+            color: var(--blanc);
+        }
+
+        @media (max-width: 800px) {
+            .education-section {
+                padding: 58px 5% 65px;
+            }
+
+            .education-timeline::before {
+                left: 9px;
+            }
+
+            .education-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding-left: 30px;
+                margin-bottom: 24px;
+            }
+
+            .education-date {
+                padding: 0 0 0 2px;
+                text-align: left;
+            }
+
+            .education-card {
+                padding: 23px 22px;
+            }
+
+            .education-card::before {
+                top: 25px;
+                left: -29px;
+                width: 9px;
+                height: 9px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .education-section {
+                padding: 48px 22px 55px;
+            }
+
+            .education-heading {
+                margin-bottom: 35px;
+            }
+
+            .education-heading h2 {
+                letter-spacing: -1px;
+            }
+
+            .education-intro {
+                font-size: 14px;
+            }
+
+            .education-card h3 {
+                font-size: 18px;
+            }
+
+            .education-description {
+                font-size: 13px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+         BANDEAU SUPÉRIEUR
+         ============================== -->
+
+    <header class="header">
+
+        <div class="header-left">
+            <a class="logo"
+               aria-label="Retour à la présentation">
+                LS
+            </a>
+
+            <div>
+                <h1 class="site-title">LOUIS SAINSARD</h1>
+                <div class="header-subtitle">PORTFOLIO PERSONNEL</div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            PROJETS · PARCOURS · EXPÉRIENCES
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         MENU DE NAVIGATION
+         ============================== -->
+
+    <nav class="menu" aria-label="Navigation principale">
+
+        <a href="accueil.html"
+           class="menu-item">
+            Accueil
+        </a>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                Projets et Compétences<span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="projets.html">Tous mes projets</a>
+                <div class="dropdown-divider"></div>
+                <a href="competences.html">Compétences</a>
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                Parcours <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="parcours-etudiant.html">Parcours étudiant</a>
+                <div class="dropdown-divider"></div>
+                <a href="experiences.html">Expériences professionnelles</a>
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+            <button class="menu-item dropdown-trigger"
+                    type="button"
+                    aria-expanded="false">
+                À propos <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         SECTION PRINCIPALE
+         ============================== -->
+
+    <main>
+        <section class="education-section">
+            <div class="education-heading">
+                <p class="section-kicker">Mise en pratique & découverte</p>
+                <h2>Mes expériences professionnelles</h2>
+                <p class="education-intro">
+                    Retrouvez ici les expériences qui m’ont permis de découvrir le monde professionnel,
+                    de développer de nouvelles compétences et de mieux comprendre les métiers qui m’intéressent.
+                    <!-- Remplace cette introduction par ton propre texte si tu le souhaites. -->
+                </p>
+            </div>
+
+            <div class="education-timeline">
+                <!-- EXPÉRIENCE 1 : remplace les textes indicatifs par tes informations. -->
+                <article class="education-item">
+                    <div class="education-date">2023 - 2024</div>
+                    <div class="education-card">
+                        <h3>Animateur en centre de loisirs</h3>
+                        <p class="education-institution">ALSH Bléré</p>
+                        <figure class="education-image">
+                            <img src="images/experience-1.jpg" alt="Photo du lieu de la première expérience professionnelle" loading="lazy">
+                            <figcaption>Photo du lieu de l’expérience — remplace cette image et cette légende si nécessaire.</figcaption>
+                        </figure>
+                        <p class="education-description">
+                            Après avoir obtenu mon BAFA, j'ai exercé la fonction d'animateur en centre de loisir. Cette expérience était très enreichissante car elle m'a vraiment permis de développer ma communication, que ce soit avec l'équipe d'animations, avec les enfants, ou les parents.
+                            <br />
+                            Mettre en place des activités, gérer les problèmes et s'adapter en fonction des situations était le commun de mes journées en tant qu'animateur.
+                        </p>
+                        <ul class="education-details">
+                        </ul>
+                        <div class="education-tags">
+                            <span class="education-tag">Communication</span>
+                            <span class="education-tag">Travail d'équipe</span>
+                            <span class="education-tag">Gestion des projets / activités</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EXPÉRIENCE 2 : supprime ce bloc si tu n’en as pas besoin. -->
+                <article class="education-item">
+                    <div class="education-date">2026</div>
+                    <div class="education-card">
+                        <h3>Stage de conception d'un banc didactique'</h3>
+                        <p class="education-institution">Laboratoire PRISME · Orléans</p>
+                        <figure class="education-image">
+                            <img src="images/experience-2.png" alt="Photo du lieu de la deuxième expérience professionnelle" loading="lazy">
+                            <figcaption>Photo du lieu de l’expérience — remplace cette image et cette légende si nécessaire.</figcaption>
+                        </figure>
+                        <p class="education-description">
+                            Durant ma deuxième année de BUT GMP, j'ai effectué mon sytage de fin d'année au Laboratoire PRISME à l'université d'Orléans.
+                            Le but de ce stage était de concevoir un banc didactique de brûleurs à hydrogène pour répondre à un projet développé par l'université d'Orléans : le projet HAPPIS.
+                            Ce stage m'a permis de découvrir un nouveau domaine qu'est celui de la recherche notamment autour de la combustion d'hydrogène, un vecteur énergétique d'avenir.
+                            J'ai pu développer mes compétences en conception, et j'ai appris en discutant et en allant chercher des informations auprès des chercheurs du laboratoire à comprendre comment fonctionnait la combustion de ce gaz.
+                            <br />
+                            Pour découvrir plus en détails le sujet de ce stage, je vous invite à le retrouver dans l'onglet Projets (Projet 5).
+                        </p>
+                        <ul class="education-details">
+                        </ul>
+                        <div class="education-tags">
+                            <span class="education-tag">Conception</span>
+                            <span class="education-tag">Combustion</span>
+                            <span class="education-tag">Hydrogène</span>
+                            <span class="education-tag">Dimensionnement</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EXPÉRIENCE 3 : copie ce bloc pour ajouter une expérience supplémentaire. -->
+                <article class="education-item">
+                    <div class="education-date">2026 - 2027</div>
+                    <div class="education-card">
+                        <h3>Alternant Etude Mécanique</h3>
+                        <p class="education-institution">MBDA France</p>
+                        <figure class="education-image">
+                            <img src="images/experience-3.png" alt="Photo du lieu de la troisième expérience professionnelle" loading="lazy">
+                            <figcaption>Photo du lieu de l’expérience — remplace cette image et cette légende si nécessaire.</figcaption>
+                        </figure>
+                        <p class="education-description">
+                            Pour ma troisième année de BUT GMP, j'ai effectué une alterance chez MBDA en étude mécanique.
+                        </p>
+                        <ul class="education-details">
+                        </ul>
+                        <div class="education-tags">
+                            <span class="education-tag">Conception</span>
+                            <span class="education-tag">Gestion de projets</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <p class="education-note">
+            </p>
+
+            <div class="education-back">
+                <a href="accueil.html">← Retour à l’accueil</a>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ==============================
+         PIED DE PAGE
+         ============================== -->
+
+    <footer class="footer">
+        <p class="footer-copy">© 2026 — Portfolio</p>
+
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/louis-sainsard-6857b130b/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="footer-link">
+                <img src="images/linkedin.png" alt="" class="footer-icon">
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="mailto:louis.sainsard@gmail.com" class="footer-link">
+                <img src="images/gmail.png" alt="" class="footer-icon">
+                <span>Mail</span>
+            </a>
+        </div>
+    </footer>
+
+
+    <!-- Gestion du menu déroulant au clic sur mobile -->
+    <script>
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(function (dropdown) {
+            const button = dropdown.querySelector('.dropdown-trigger');
+
+            button.addEventListener('click', function () {
+                const isOpen = dropdown.classList.contains('open');
+
+                dropdowns.forEach(function (otherDropdown) {
+                    otherDropdown.classList.remove('open');
+
+                    const otherButton =
+                        otherDropdown.querySelector('.dropdown-trigger');
+
+                    otherButton.setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isOpen) {
+                    dropdown.classList.add('open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            dropdowns.forEach(function (dropdown) {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('open');
+
+                    dropdown.querySelector('.dropdown-trigger')
+                        .setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                dropdowns.forEach(function (dropdown) {
+                    dropdown.classList.remove('open');
+
+                    dropdown.querySelector('.dropdown-trigger')
+                        .setAttribute('aria-expanded', 'false');
+                });
+            }
+        });</script>
+
+</body>
+</html>

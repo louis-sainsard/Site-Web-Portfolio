@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2 | Robot suiveur de ligne</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fond: #F5F4F0;
+            --fond-degrade: #E8EBEF;
+            --blanc: #FFFFFF;
+            --texte: #242729;
+            --secondaire: #777B7D;
+            --bordure: #DEDFDD;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--fond) 0%, #F1F2F4 55%, var(--fond-degrade) 100%);
+            color: var(--texte);
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .page {
+            width: min(100% - 40px, 1000px);
+            margin: 0 auto;
+            padding: 64px 0 48px;
+        }
+
+        .intro { margin-bottom: 44px; }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--secondaire);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 800px;
+            font-size: clamp(34px, 6vw, 54px);
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 22px 0 0;
+            color: var(--secondaire);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .steps { display: grid; gap: 22px; }
+
+        .step {
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            gap: 22px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid var(--bordure);
+            border-radius: 18px;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #C9CBC8;
+            border-radius: 50%;
+            color: var(--texte);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .step h2 {
+            margin: 2px 0 12px;
+            font-size: 21px;
+            line-height: 1.35;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #555A5C;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            margin-top: 20px;
+            padding: 24px;
+            border: 1px dashed #BFC2C1;
+            border-radius: 12px;
+            background: rgba(245, 244, 240, 0.65);
+            color: var(--secondaire);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Les images restent à l'échelle, sans déformation ni débordement. */
+        .step-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            margin: 20px auto 0;
+            border-radius: 12px;
+        }
+        .image-source {
+            margin: 8px 0 0;
+            color: var(--secondaire);
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+            font-style: italic;
+        }
+        .return-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 42px;
+        }
+
+        .return-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border: 1px solid var(--texte);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--texte);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+        .return-button:hover {
+            background: var(--texte);
+            color: var(--blanc);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .page { width: min(100% - 28px, 1000px); padding-top: 40px; }
+            .step { grid-template-columns: 1fr; gap: 15px; padding: 22px; }
+            .step-number { width: 42px; height: 42px; }
+            .intro { margin-bottom: 30px; }
+            .step-image { max-height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="intro">
+            <p class="eyebrow">Projet 02 · Robotique</p>
+            <h1>Conception d’un robot suiveur de ligne</h1>
+            <p class="intro-text">
+                Dans le cadre d’un projet en équipe à Polytech, nous avons conçu et réalisé un robot capable de suivre une ligne et d’effectuer une « satellisation ». Cette page présente les grandes étapes du projet.
+            </p>
+        </section>
+
+        <div class="steps">
+            <section class="step">
+                <div class="step-number">01</div>
+                <div>
+                    <h2>Choix de la solution et brainstorming</h2>
+                    <p>Durant cette étape, l'objectif était, à partir du sujet, de trouver différentes solutions possibles pour répondre à la problématique: Pouvoir mettre en orbite notre satellite (représenté par une balle qui s'accrocherait avec du velcro sur une autre balle).</p>
+                    <img class="step-image"
+                         src="images/brainstorming.jpg"
+                         alt="Brainstorming et choix de la solution pour le robot">
+
+                    <p class="image-source">
+                        Source : audreytips.com
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">02</div>
+                <div>
+                    <h2>Conception</h2>
+                    <p>
+                        Après avoir déterminé notre solution, nous sommes passés à la phase de conception. Le bâti nous était donné, et nous devions définir l'emplacement de nos éléments sur notre robot, puis concevoir notre solution.
+                        Nous étions parti sur une solution de bras articulé, qui viendrait déposer la balle. Comme plusieurs objectifs étaient réalisable (3 planètes différentes), nous avons choisi pour s'adapter, de créer un système d'étagère glissable.
+                        Nous avons réalisé cette conception sur le logiciel CREO.
+                    </p>
+                    <img class="step-image"
+                         src="images/projet2.png"
+                         alt="Brainstorming et choix de la solution pour le robot">
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">03</div>
+                <div>
+                    <h2>Montage</h2>
+                    <p>Nous sommes passé ensuite à la phase de montage. Au préalable, nos pièces avaient été fabriquées au Fablab (découpe) et pliées (pour les pièces metalliques). A plusieurs reprises, nous avosn dû nous adapter pour monter notre robot. L'une des parties les plus complexes était la mise en place des capteurs qui permettraient de suivre la ligne.'</p>
+                    <img class="step-image"
+                         src="images/montage2.jpg"
+                         alt="Brainstorming et choix de la solution pour le robot">
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">04</div>
+                <div>
+                    <h2>Programmation et phase de test</h2>
+                    <p>Pour cette partie, nous avons utilisés nos compétences de codage en arduino pour permettre au robot de suivre correctement les lignes. Une piste d'essai était mise à dispostion pour tester notre robot. En répétant ces tests, nous avons finalement réussi à atteindre le bout de la piste.</p>
+                    <img class="step-image"
+                         src="images/programmation.png"
+                         alt="Brainstorming et choix de la solution pour le robot">
+
+                    <p class="image-source">
+                        Tableau du principe de programmation du suivi de ligne
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">05</div>
+                <div>
+                    <h2>Design de la coque</h2>
+                    <p>Pour améliorer l'apsect esthétique de notre robot, nous avons créé une coque. Notre robot s'appelant R2 Explorer, nous avons choisi d'imiter l'appararence du droïde R2-D2.</p>
+                    <img class="step-image"
+                         src="images/coque.jpg"
+                         alt="Brainstorming et choix de la solution pour le robot">
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">06</div>
+                <div>
+                    <h2>Épreuve finale</h2>
+                    <p>Le jour de l'épreuve, nous sommes parvenu à suivre la ligne, mais n'avaons pas atteint la fin de la piste et l'objectif.</p>
+                    <img class="step-image"
+                         src="images/course2.png"
+                         alt="Brainstorming et choix de la solution pour le robot">
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <div class="return-area">
+            <a class="return-button" href="projets.html"><span aria-hidden="true">←</span> Retour aux projets</a>
+        </div>
+    </main>
+</body>
+</html>

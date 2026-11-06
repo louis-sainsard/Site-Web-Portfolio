@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 3 | Site web vente et location</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fond: #F5F4F0;
+            --fond-degrade: #E8EBEF;
+            --blanc: #FFFFFF;
+            --texte: #242729;
+            --secondaire: #777B7D;
+            --bordure: #DEDFDD;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--fond) 0%, #F1F2F4 55%, var(--fond-degrade) 100%);
+            color: var(--texte);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: min(100% - 40px, 1000px);
+            margin: 0 auto;
+            padding: 64px 0 48px;
+        }
+
+        .intro {
+            margin-bottom: 44px;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--secondaire);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 800px;
+            font-size: clamp(34px, 6vw, 54px);
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 22px 0 0;
+            color: var(--secondaire);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .steps {
+            display: grid;
+            gap: 22px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            gap: 22px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid var(--bordure);
+            border-radius: 18px;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #C9CBC8;
+            border-radius: 50%;
+            color: var(--texte);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .step h2 {
+            margin: 2px 0 12px;
+            font-size: 21px;
+            line-height: 1.35;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #555A5C;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            margin-top: 20px;
+            padding: 24px;
+            border: 1px dashed #BFC2C1;
+            border-radius: 12px;
+            background: rgba(245, 244, 240, 0.65);
+            color: var(--secondaire);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Les images restent à l'échelle, sans déformation ni débordement. */
+        .step-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            margin: 20px auto 0;
+            border-radius: 12px;
+        }
+
+        .image-source {
+            margin: 8px 0 0;
+            color: var(--secondaire);
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .return-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 42px;
+        }
+
+        .return-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border: 1px solid var(--texte);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--texte);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+            .return-button:hover {
+                background: var(--texte);
+                color: var(--blanc);
+                transform: translateY(-2px);
+            }
+
+        @media (max-width: 600px) {
+            .page {
+                width: min(100% - 28px, 1000px);
+                padding-top: 40px;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 22px;
+            }
+
+            .step-number {
+                width: 42px;
+                height: 42px;
+            }
+
+            .intro {
+                margin-bottom: 30px;
+            }
+
+            .step-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="intro">
+            <p class="eyebrow">Projet 03 · Programmation</p>
+            <h1>Création d'un site web de vente et location de véhicules</h1>
+            <p class="intro-text">
+                Dans le cadre d’un projet informatique à Polytech, j'ai' conçu et réalisé un site web avec pour objectif de permettre l'achat ou la location d'un véhicule. Cette page présente les grandes étapes du projet.
+            </p>
+        </section>
+
+        <div class="steps">
+            <section class="step">
+                <div class="step-number">01</div>
+                <div>
+                    <h2>Utilisation du langage HTML, CSS et PHP</h2>
+                    <p>
+                        Durant mes années à Polytech, j'ai étudié différents type de langage de codage. Pour ce projet j'au utilisé mes bases en HTML, CSS et PHP pour créer mon site.
+                        <br />
+                        Le langage HTML permet de construire le contenu de mon site web. A l'aide de différentes balises, je créé les parties de mon site et renseigne les informations à entrer. Le langage HTML est lié au CSS. Le CSS me permet de construire le design de ma page, comme placer des conteneurs, en centrant le texte, variant les polices et tailles d'écritures, et placer les images aux bons endroits.
+                        <br />
+                        Le PHP permet de lier mon programme à une base de données sur monc PC. C'est sur cette base que les informations personnelles sont traitées. En lien avec mon site web de véhicules, ma base de données va recenser les véhicules, gérer les créations de comptes, les mots de passe, et permet même de lire les messages qui sont envoyés par les utilisateurs. Le PHP fait donc ce lien entre la base de données et le site.
+                    </p>
+                    <img class="step-image"
+                         src="images/code.png"
+                         alt="Exemple code">
+
+                    <p class="image-source">
+                        Exemple de code de mon site de la page d'accueil (HTML)
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-number">02</div>
+                <div>
+                    <h2>Différentes pages de mon site</h2>
+                    <p>
+                        Je vais vous détailler les fonctionnalités des différentes pages de mon site web. Je présente aussi ce projet sur ma vidéo de présentation que je vous invite à regarder.
+
+                    </p>
+                    <h3>1- Page d'accueil</h3>
+                    <img class="step-image"
+                         src="images/projet3.png"
+                         alt="Accueil">
+
+                    <p class="image-source">
+                    </p>
+                    <p><br />Cette page présente le site web et contient tous les liens nécessaires à la navigation à travers le site pour réaliser sa location ou son achat.</p>
+
+                    <h3>2- Location</h3>
+                    <img class="step-image"
+                         src="images/prog2.png"
+                         alt="Loc">
+
+                    <p class="image-source">
+                    </p>
+                    <p><br />On retrouve ici la page de location des véhicules. Il y'a les différents choix des véhicules et la possibilités en cliquant sur l'un d'eux d'avoir les détails du prix et des caractéristiques de la voiture.'</p>
+                    <h3>3- Vente</h3>
+                    <img class="step-image"
+                         src="images/prog3.png"
+                         alt="Vente">
+
+                    <p class="image-source">
+                    </p>
+                    <p><br />Cette page est codé de la même façon que la précédente. J'ai mis en avant sur l'image les caractéristiques de l'un des véhicules. Ici, l'utilisateur ne s'étant pas identifié, on l'invite à se connecter via la page compte. Une fois connecté, il pourra alors effectué son achat.</p>
+                    <h3>4- Devis</h3>
+                    <img class="step-image"
+                         src="images/prog4.png"
+                         alt="Devis">
+
+                    <p class="image-source">
+                    </p>
+                    <p><br />Cette page a pour objectif d'aider l'utilisateur à faire son choix. En fonction de ce qu'il recherche un devis lui sera proposé avec les voitures correspondantes à ses critères. Un pdf est automatiquement généré à la fin de ses choix.</p>
+
+                    <img class="step-image"
+                         src="images/devis.png"
+                         alt="Devis">
+
+                    <p class="image-source">
+                        Exemple de Devis généré via des critères choisis
+                    </p>
+                    <h3>5- Contact</h3>
+                    <img class="step-image"
+                         src="images/prog5.png"
+                         alt="Contact">
+
+                    <p class="image-source">
+                    </p>
+                    <p><br />On retrouve sur cette page les contatcs qui sont inventés, ce site ayant pour but d'être simplement un site de démonstration. La partie message envoie ce dernier directement sur la base de données auquel seul l'administrateur a accès.</p>
+                    <h3>6- Compte</h3>
+                    <img class="step-image"
+                         src="images/prog6 (2).png"
+                         alt="Compte">
+
+                    <p class="image-source">
+                    </p>
+                    <p><br />Sur cette page, l'utilisateur a la possibilité de créer son compte ou de se connecter. Si il crée son compte, celui-ci va être stocké dans la base de données, il aura alors la possibilité ensuite de se connecter. Une fois connecté, il pourra faire sa réservation ou son achat.</p>
+                    <img class="step-image"
+                         src="images/prog6.png"
+                         alt="Compte">
+
+                    <p class="image-source">
+                    </p>
+                </div>
+            </section>
+
+
+            <section class="step">
+                <div class="step-number">03</div>
+                <div>
+                    <h2>Ma base de données</h2>
+                    <p>
+                        Elle recense donc les données du site web. Elle est nommée roue_libre (anicen nom de mon site) et est constitué de tables qui représentent toutes les données du site. A chaque modification, la base de données se met à jour automatiquement. Sur l'image, on voit donc la table des messages avec tous les messages de tests envoyés.
+
+                    </p>
+                    <img class="step-image"
+                         src="images/bdd.png"
+                         alt="Base de données">
+
+                    <p class="image-source">
+                    </p>
+
+
+                </div>
+            </section>
+
+        </div>
+
+        <div class="return-area">
+            <a class="return-button" href="projets.html"><span aria-hidden="true">←</span> Retour aux projets</a>
+        </div>
+    </main>
+</body>
+</html>
